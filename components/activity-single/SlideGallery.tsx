@@ -61,7 +61,7 @@ const SlideGallery = ({ urls }: { urls?: string[] }) => {
                 {({ ref, open }) => (
                   <div
                     className="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery"
-                    ref={ref}
+                    ref={ref as MutableRefObject<HTMLDivElement>}
                     onClick={open}
                     role="button"
                   >
