@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { Gallery, Item } from "react-photoswipe-gallery";
+import { MutableRefObject } from "react";
 
 const SlideGallery = ({ urls }: { urls?: string[] }) => {
   const sliderImg = [
