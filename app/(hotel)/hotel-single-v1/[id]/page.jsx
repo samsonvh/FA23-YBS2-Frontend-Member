@@ -32,6 +32,7 @@ export const metadata = {
 
 const HotelSingleV1Dynamic = async ({ params }) => {
   const id = params.id;
+  console.log(await GetMembershipPackages())
   const hotel = hotelsData.find((item) => item.id == id) || hotelsData[0];
   return (
     <>
