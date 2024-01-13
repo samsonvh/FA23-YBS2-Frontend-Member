@@ -24,12 +24,17 @@ export const metadata = {
   description: "GoTrip - Travel & Tour React NextJS Template",
 };
 
-export const maxDuration = 10;
-
-const TourSingleV1Dynamic = async ({ params }) => {
-  const id = params.id;
-  var tour: ITour = await getTourById(id);
-  const cruise = cruiseData.find((item) => item.id == id);
+export async function getStaticProps({ params }) {
+  const data = await getTourById(params.id);
+  return {
+    props: {
+      data,
+    },
+  };
+}
+const TourSingleV1Dynamic = async ({ data }) => {
+  var tour: ITour = data;
+  const cruise = cruiseData.find((item) => item.id == data.id);
 
   return (
     <>
