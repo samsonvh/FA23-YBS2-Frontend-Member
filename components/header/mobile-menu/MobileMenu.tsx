@@ -21,8 +21,8 @@ const MobileMenu = () => {
   const pathname = usePathname();
 
   const [isActiveParent, setIsActiveParent] = useState(false);
-  const [isActiveNestedParentTwo, setisActiveNestedParentTwo] = useState(false);
-  const [isActiveNestedParent, setisActiveNestedParent] = useState(false);
+  const [isActiveNestedParentTwo, setisActiveNestedParentTwo] = useState("");
+  const [isActiveNestedParent, setisActiveNestedParent] = useState(-1);
 
   const router = useRouter();
 

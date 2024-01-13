@@ -105,7 +105,7 @@ const TourSingleV1Dynamic = async ({ params }) => {
           <div className="row">
             <div className="col-xl-8">
               <h3 className="text-22 fw-500">Tour snapshot</h3>
-              <TourSnapShot duration={tour.duration} durationUnit={tour.durationUnit} maximumGuest={tour.maximumGuest}/>
+              <TourSnapShot duration={tour.duration} durationUnit={tour.durationUnit} maximumGuest={tour.maximumGuest} startTime={tour.startTime} endTime={tour.endTime}/>
               {/* End toursnapshot */}
               <div className="border-top-light mt-40"></div>
 

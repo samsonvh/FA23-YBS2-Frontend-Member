@@ -21,7 +21,7 @@ const DateSearch = () => {
         inputClass="custom_input-picker"
         containerClassName="custom_container-picker"
         value={dates}
-        onChange={setDates}
+        onChange={e => setDates(e as DateObject[])}
         numberOfMonths={2}
         offsetY={10}
         range

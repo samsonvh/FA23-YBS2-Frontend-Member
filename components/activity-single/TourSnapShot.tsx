@@ -2,10 +2,14 @@ const TourSnapShot = ({
   duration,
   durationUnit,
   maximumGuest,
+  startTime,
+  endTime,
 }: {
   duration: number;
   durationUnit: string;
   maximumGuest: number;
+  startTime: Date;
+  endTime: Date;
 }) => {
   return (
     <div className="row y-gap-30 justify-between pt-20">
@@ -41,8 +45,9 @@ const TourSnapShot = ({
         <div className="d-flex">
           <i className="icon-route text-22 text-blue-1 mr-10"></i>
           <div className="text-15 lh-15">
-            Near public
-            <br /> transportation
+            Start Time: <br /> {startTime.toString().substring(0,5)}
+            {/* Near public
+            <br /> transportation */}
           </div>
         </div>
       </div>
@@ -52,10 +57,11 @@ const TourSnapShot = ({
         <div className="d-flex">
           <i className="icon-access-denied text-22 text-blue-1 mr-10"></i>
           <div className="text-15 lh-15">
-            Free cancellation <br />
+            End Time: <br /> {endTime.toString().substring(0,5)}
+            {/* Free cancellation <br />
             <a href="#" className="text-blue-1 underline">
               Learn more
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

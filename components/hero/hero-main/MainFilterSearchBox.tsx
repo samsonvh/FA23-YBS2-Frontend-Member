@@ -8,7 +8,7 @@ import LocationSearch from "./LocationSearch";
 import { useRouter } from "next/navigation";
 
 const MainFilterSearchBox = () => {
-  const { tabs, currentTab } = useSelector((state) => state.hero) || {};
+  // const { tabs, currentTab } = useSelector((state) => state.hero) || {};
   const dispatch = useDispatch();
   const Router = useRouter();
 
