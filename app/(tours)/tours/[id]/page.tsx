@@ -25,13 +25,8 @@ export const metadata = {
 };
 
 const TourSingleV1Dynamic = async ({ params }) => {
-  var tour : ITour = null;
   const id = params.id;
-  const getTour = async (id) => {
-    await getTourById(id).then((res) => tour = res);
-    console.log(tour)
-  };
-  await getTour(id);
+  var tour : ITour = await getTourById(id);
   const cruise = cruiseData.find((item) => item.id == id);
 
   return (
