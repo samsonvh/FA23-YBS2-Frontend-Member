@@ -44,7 +44,7 @@ const TourSingleV1Dynamic = async ({ params }) => {
 
       <section className="pt-40">
         <div className="container">
-          <SlideGallery urls={tour.imageURLs}/>
+          <SlideGallery urls={tour.imageURLs} />
         </div>
       </section>
       {/* End gallery grid wrapper */}
@@ -100,11 +100,17 @@ const TourSingleV1Dynamic = async ({ params }) => {
           <div className="row">
             <div className="col-xl-8">
               <h3 className="text-22 fw-500">Tour snapshot</h3>
-              <TourSnapShot duration={tour.duration} durationUnit={tour.durationUnit} maximumGuest={tour.maximumGuest} startTime={tour.startTime} endTime={tour.endTime}/>
+              <TourSnapShot
+                duration={tour.duration}
+                durationUnit={tour.durationUnit}
+                maximumGuest={tour.maximumGuest}
+                startTime={tour.startTime}
+                endTime={tour.endTime}
+              />
               {/* End toursnapshot */}
               <div className="border-top-light mt-40"></div>
 
-              <Overview description={tour.description}/>
+              <Overview description={tour.description} />
               {/* End Overview */}
             </div>
             {/* End .col-xl-8 */}
@@ -215,5 +221,5 @@ const TourSingleV1Dynamic = async ({ params }) => {
 };
 
 export default dynamic(() => Promise.resolve(TourSingleV1Dynamic), {
-  ssr: false,
+  ssr: true,
 });

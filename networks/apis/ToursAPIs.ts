@@ -5,9 +5,9 @@ import { Agent, setGlobalDispatcher } from "undici";
 
 export const getTourById: TGetTourById = async (id: string) => {
   const url = process.env.API_SERVER + process.env.API_VERSION + "/tours/" + id;
-  const res = await fetch(url);
-  console.log(res.status )
-  console.log(res)
+  const res = await fetch(url).catch(err => console.log(err));
+//   console.log(res.status )
+//   console.log(res)
   if (res) {
     return await res.json();
   }
