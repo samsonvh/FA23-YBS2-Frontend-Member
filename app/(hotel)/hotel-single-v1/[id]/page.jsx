@@ -23,16 +23,17 @@ import Hotels2 from "@/components/hotels/Hotels2";
 import CallToActions from "@/components/common/CallToActions";
 import DefaultFooter from "@/components/footer/default";
 import GalleryOne from "@/components/hotel-single/GalleryOne";
+import { GetMembershipPackages } from "@/networks/apis/MembershipPackagesAPIs";
 
 export const metadata = {
   title: "Hotel Single v1 || GoTrip - Travel & Tour React NextJS Template",
   description: "GoTrip - Travel & Tour React NextJS Template",
 };
 
-const HotelSingleV1Dynamic = ({ params }) => {
+const HotelSingleV1Dynamic = async ({ params }) => {
   const id = params.id;
   const hotel = hotelsData.find((item) => item.id == id) || hotelsData[0];
-
+  await GetMembershipPackages();
   return (
     <>
       {/* End Page Title */}
