@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    API_VERSION: "/api/v1",
-    API_SERVER: "http://112.213.91.196:7000",
+    API_VERSION: process.env.API_VERSION,
+    API_SERVER: process.env.API_SERVER,
   },
 };
 
