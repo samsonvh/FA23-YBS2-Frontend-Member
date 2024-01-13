@@ -11,6 +11,14 @@ const TourSnapShot = ({
   startTime: Date;
   endTime: Date;
 }) => {
+  if(!startTime){
+    startTime = new Date();
+  }
+  if(!endTime){
+    endTime = new Date();
+  }
+
+
   return (
     <div className="row y-gap-30 justify-between pt-20">
       <div className="col-md-auto col-6">
