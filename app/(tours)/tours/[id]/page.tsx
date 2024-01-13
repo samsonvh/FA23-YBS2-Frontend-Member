@@ -24,6 +24,8 @@ export const metadata = {
   description: "GoTrip - Travel & Tour React NextJS Template",
 };
 
+export const maxDuration = 300;
+
 const TourSingleV1Dynamic = async ({ params }) => {
   const id = params.id;
   var tour : ITour = await getTourById(id);
