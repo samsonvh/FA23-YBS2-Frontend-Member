@@ -32,11 +32,12 @@ export const metadata = {
 
 const HotelSingleV1Dynamic = async ({ params }) => {
   const id = params.id;
-  console.log(await GetMembershipPackages())
+  const a = await fetch('http://112.213.91.196:7000/api/v1/membership-packages')
   const hotel = hotelsData.find((item) => item.id == id) || hotelsData[0];
   return (
     <>
       {/* End Page Title */}
+      <p>{a}</p>
 
       <div className="header-margin"></div>
       {/* header top margin */}
