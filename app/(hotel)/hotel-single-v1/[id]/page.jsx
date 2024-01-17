@@ -30,9 +30,8 @@ export const metadata = {
   description: "GoTrip - Travel & Tour React NextJS Template",
 };
 
-const HotelSingleV1Dynamic = async ({ params }) => {
+const HotelSingleV1Dynamic =  ({ params }) => {
   const id = params.id;
-  const a = await fetch('http://112.213.91.196:7000/api/v1/membership-packages')
   const hotel = hotelsData.find((item) => item.id == id) || hotelsData[0];
   return (
     <>

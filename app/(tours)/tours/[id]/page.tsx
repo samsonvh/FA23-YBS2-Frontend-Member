@@ -1,3 +1,5 @@
+"use client"
+
 import dynamic from "next/dynamic";
 import "photoswipe/dist/photoswipe.css";
 import cruiseData from "@/data/cruise";
@@ -19,15 +21,16 @@ import TourSnapShot from "@/components/activity-single/TourSnapShot";
 import { ITour } from "@/data/ResponseInterfaces";
 import { getTourById } from "@/networks/apis/ToursAPIs";
 
-export const metadata = {
-  title: "Cruise Single || GoTrip - Travel & Tour React NextJS Template",
-  description: "GoTrip - Travel & Tour React NextJS Template",
-};
+// export const metadata = {
+//   title: "Cruise Single || GoTrip - Travel & Tour React NextJS Template",
+//   description: "GoTrip - Travel & Tour React NextJS Template",
+// };
 
 const TourSingleV1Dynamic = async ({ params }) => {
   const id = params.id;
   var tour : ITour = await getTourById(id);
   const cruise = cruiseData.find((item) => item.id == id);
+  console.log(tour)
 
   return (
     <>
@@ -221,5 +224,5 @@ const TourSingleV1Dynamic = async ({ params }) => {
 };
 
 export default dynamic(() => Promise.resolve(TourSingleV1Dynamic), {
-  ssr: true,
+  ssr: false,
 });
