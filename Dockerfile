@@ -10,6 +10,9 @@ COPY package*.json ./
 # Install dependencies  
 RUN npm ci  
 
+ENV API_SERVER=http://112.213.91.196:7000
+ENV API_VERSION=/api/v1
+
 # Copy the app source code to the container  
 COPY . .  
 
