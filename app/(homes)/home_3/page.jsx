@@ -4,7 +4,7 @@ import Hero3 from "@/components/hero/hero-3";
 import TopDestinations from "@/components/destinations/TopDestinations";
 import Hotels from "@/components/hotels/Hotels2";
 import Link from "next/link";
-import Tours from "@/components/tours/Tours";
+// import Tours from "@/components/tours/Tours";
 import Activity from "@/components/activity/Activity";
 import Rentals from "@/components/rentals/Rentals";
 import Cars from "@/components/cars/Cars";
@@ -156,7 +156,7 @@ const home_3 = () => {
           {/* End .row */}
 
           <div className="row y-gap-30 pt-40 sm:pt-20 item_gap-x30">
-            <Tours />
+            {/* <Tours /> */}
           </div>
           {/* End .row */}
         </div>

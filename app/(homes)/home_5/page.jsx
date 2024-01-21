@@ -3,12 +3,12 @@ import Header5 from "@/components/header/header-5";
 import Hero5 from "@/components/hero/hero-5";
 import Link from "next/link";
 import Footer4 from "@/components/footer/footer-4";
-import Tours2 from "@/components/tours/Tours2";
+// import Tours2 from "@/components/tours/Tours2";
 import TourCategories from "@/components/home/home-5/TourCategories";
 import Locations from "@/components/home/home-5/Locations";
 import CallToActions from "@/components/home/home-5/CallToActions";
 import Blog from "@/components/blog/Blog3";
-import Tours3 from "@/components/tours/Tours3";
+// import Tours3 from "@/components/tours/Tours3";
 import DiscountsBanner from "@/components/home/home-5/DiscountsBanner";
 import Counter3 from "@/components/counter/Counter3";
 import WhyChooseUs from "@/components/home/home-5/WhyChooseUs";
@@ -57,7 +57,7 @@ const home_5 = () => {
           {/* End .row */}
 
           <div className="row y-gap-30 pt-40 sm:pt-20 item_gap-x30">
-            <Tours2 />
+            {/* <Tours2 /> */}
           </div>
           {/* End .row */}
         </div>
@@ -189,7 +189,7 @@ const home_5 = () => {
             {/* End col-xl-5 */}
 
             <div className="col-xl-7">
-              <Tours3 />
+              {/* <Tours3 /> */}
             </div>
             {/* End col-xl-7 */}
           </div>

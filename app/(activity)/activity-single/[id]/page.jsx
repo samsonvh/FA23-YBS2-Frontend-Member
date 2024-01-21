@@ -12,7 +12,7 @@ import ReplyForm from "@/components/activity-single/ReplyForm";
 import ReplyFormReview2 from "@/components/activity-single/ReplyFormReview2";
 import CallToActions from "@/components/common/CallToActions";
 import DefaultFooter from "@/components/footer/default";
-import Tours from "@/components/tours/Tours";
+// import Tours from "@/components/tours/Tours";
 import Faq from "@/components/faq/Faq";
 import Link from "next/link";
 import ImportantInfo from "@/components/activity-single/ImportantInfo";
@@ -272,7 +272,7 @@ const TourSingleV1Dynamic = ({ params }) => {
           {/* End .row */}
 
           <div className="row y-gap-30 pt-40 sm:pt-20 item_gap-x30">
-            <Tours />
+            {/* <Tours /> */}
           </div>
           {/* End .row */}
         </div>

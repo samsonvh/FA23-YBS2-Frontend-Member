@@ -16,7 +16,7 @@ import IntroTown from "@/components/destinations/components/IntroTown";
 import Weather from "@/components/destinations/components/Weather";
 import GeneralInfo from "@/components/destinations/components/GeneralInfo";
 import Cars from "@/components/cars/Cars";
-import Tours from "@/components/tours/Tours";
+// import Tours from "@/components/tours/Tours";
 import Activity from "@/components/activity/Activity";
 import Rentals from "@/components/rentals/Rentals";
 import Hotels from "@/components/hotels/Hotels2";
@@ -149,7 +149,7 @@ const Destinations = () => {
           {/* End .row */}
 
           <div className="row y-gap-30 pt-40 sm:pt-20 item_gap-x30">
-            <Tours />
+            {/* <Tours /> */}
           </div>
           {/* End .row */}
         </div>
