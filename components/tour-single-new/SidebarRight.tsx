@@ -1,6 +1,6 @@
-import FilterBox from "@components/tours/filter-box";
+import FilterBox from "@components/tour-single-new/filter-box";
 
-const SidebarRight = ({ cruise }) => {
+const SidebarRight = ({ cruise , tour}) => {
   return (
     <div className="ml-50 lg:ml-0">
       <div className="px-30 py-30 border-light rounded-4 shadow-4">
@@ -24,7 +24,7 @@ const SidebarRight = ({ cruise }) => {
         {/* End d-flex */}
 
         <div className="row y-gap-20 pt-30">
-          <FilterBox />
+          <FilterBox tourId={tour.id}/>
         </div>
 
         <div className="d-flex items-center pt-20">

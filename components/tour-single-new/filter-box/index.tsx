@@ -2,7 +2,7 @@ import GuestSearch from "./GuestSearch";
 import DateSearch from "./DateSearch";
 import Link from "next/link";
 
-const index = () => {
+const index = ({ tourId }) => {
   return (
     <>
       <div className="col-12">
@@ -24,7 +24,7 @@ const index = () => {
 
       <div className="col-12">
         <Link
-          href="/booking-page"
+          href={`/tours/booking?id=${tourId}`}
           className="button -dark-1 py-15 px-35 h-60 col-12 rounded-4 bg-blue-1 text-white"
         >
           Book Now

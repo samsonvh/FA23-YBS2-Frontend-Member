@@ -5,3 +5,18 @@ export interface ICountry {
   en_short_name: string;
   nationality: string;
 }
+
+export interface ICity {
+  name: string;
+  slug: string;
+  type: string;
+  name_with_type: string;
+  code: string;
+}
+
+export interface IBookingTemp {
+  startDate: Date;
+  endDate: Date;
+  adultNumber: number;
+  childrenNumber: number;
+}

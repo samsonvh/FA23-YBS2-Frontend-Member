@@ -4,7 +4,7 @@ import cruiseData from "@/data/cruise";
 import Header11 from "@/components/header/header-11";
 import Overview from "@/components/cruise-single/Overview";
 import TopBreadCrumb from "@/components/cruise-single/TopBreadCrumb";
-import SidebarRight from "@/components/tours/SidebarRight";
+import SidebarRight from "@/components/tour-single-new/SidebarRight";
 import ReviewProgress from "@/components/cruise-single/guest-reviews/ReviewProgress";
 import DetailsReview from "@/components/cruise-single/guest-reviews/DetailsReview";
 import ReplyForm from "@/components/cruise-single/ReplyForm";
@@ -117,7 +117,7 @@ const TourSingleV1Dynamic = async ({ params }) => {
             {/* End .col-xl-8 */}
 
             <div className="col-xl-4">
-              <SidebarRight cruise={cruise} />
+              <SidebarRight cruise={cruise} tour={tour} />
             </div>
             {/* End .col-xl-4 */}
           </div>

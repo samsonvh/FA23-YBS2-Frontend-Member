@@ -10,30 +10,82 @@ import {
   SelectValue,
 } from "../ui/select";
 import { Button } from "../ui/button";
-import { useState } from "react";
+import {
+  Dispatch,
+  MouseEvent,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
+import { ITour } from "@/data/ResponseInterfaces";
+import { IBookingTemp } from "@/data/ModelInterfaces";
+import PassengerForm from "./PassengerForm";
+import { IBookingRequest, IPassenger } from "@/data/RequestInterfaces";
 
-const PassengerInfo = () => {
-  const [passengerList, setPassengerList] = useState([
+const PassengerInfo = ({
+  tour,
+  bookingTemp,
+  bookingRequest,
+  setBookingRequest,
+}: {
+  tour: ITour;
+  bookingTemp: IBookingTemp;
+  bookingRequest: IBookingRequest;
+  setBookingRequest: Dispatch<SetStateAction<IBookingRequest>>;
+}) => {
+  console.log(bookingRequest);
+
+  const [passengerInfoList, setPassengerInfoList] = useState(
+    bookingRequest.passengers
+  );
+  const [currentPassengerPos, setCurrentPassengerPos] = useState(0);
+
+  const [selectPos, setSelectPos] = useState("1");
+  const [selectList, setSelectList] = useState([
     { key: "Passenger 1", value: 1 },
   ]);
-  const [defaultPassengerPos, setDefaultPassengerPos] = useState(0);
-
-  const [passengerInfoList, setPassengerInfoList] = useState([]);
 
   const addPassenger = () => {
-    const pos = passengerList.length + 1;
-    setPassengerList([
-      ...passengerList,
-      { key: "Passenger " + pos, value: pos },
+    const pos = selectList.length + 1;
+    setSelectList([...selectList, { key: "Passenger " + pos, value: pos }]);
+    setPassengerInfoList([
+      ...passengerInfoList,
+      { isLeader: false } as IPassenger,
     ]);
-    setDefaultPassengerPos(pos - 1);
+    setBookingRequest({ ...bookingRequest, passengers: passengerInfoList });
+    setCurrentPassengerPos(pos - 1);
   };
+
+  useEffect(() => {
+    for (var i = 0; i < passengerInfoList.length; i++) {
+      if (i == 0) {
+        continue;
+      }
+      setSelectList([
+        ...selectList,
+        { key: "Passenger " + (i + 1), value: i + 1 },
+      ]);
+    }
+  }, []);
+
+  useEffect(() => {
+    setSelectPos(selectList.length.toString());
+  }, [selectList]);
+
+  useEffect(() => {
+    console.log(passengerInfoList);
+    setCurrentPassengerPos(Number.parseInt(selectPos) - 1);
+  }, [selectPos]);
+
+  useEffect(() => {
+    setBookingRequest({ ...bookingRequest, passengers: passengerInfoList });
+  }, [passengerInfoList]);
 
   return (
     <>
       <div className="col-xl-7 col-lg-8 mt-30">
         <div className="row y-gap-20 items-center justify-between">
-          <div className="col-auto">
+          {/* <div className="col-auto">
             <div className="form-checkbox d-flex items-center">
               <input type="checkbox" name="name" />
               <div className="form-checkbox__mark">
@@ -43,7 +95,7 @@ const PassengerInfo = () => {
                 Not include yourself as a passenger
               </div>
             </div>
-          </div>
+          </div> */}
           {/* End col-auto */}
         </div>
         {/* End terms and conditons */}
@@ -55,14 +107,12 @@ const PassengerInfo = () => {
           <div className="col-12 col-md-5 md:tw-pt-6">
             <div className="row">
               <div className="col">
-                <Select
-                  value={passengerList.at(defaultPassengerPos).value.toString()}
-                >
+                <Select value={selectPos} onValueChange={setSelectPos}>
                   <SelectTrigger className="tw-text-lg">
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent>
-                    {passengerList.map((passenger) => (
+                    {selectList.map((passenger) => (
                       <SelectItem
                         key={passenger.key}
                         value={passenger.value.toString()}
@@ -74,48 +124,30 @@ const PassengerInfo = () => {
                 </Select>
               </div>
               <div className="col-auto">
-                <Button onClick={addPassenger}>Add</Button>
+                <Button
+                  onClick={(event) => {
+                    event.preventDefault();
+                    addPassenger();
+                  }}
+                >
+                  Add
+                </Button>
               </div>
             </div>
           </div>
         </div>
 
         <div className="row x-gap-20 y-gap-20 pt-20">
-          <div className="col-12">
-            <div className="form-input ">
-              <input type="text" required />
-              <label className="lh-1 text-16 text-light-1">Full Name</label>
-            </div>
-          </div>
-          {/* End col-12 */}
-
-          <div className="col-md-6">
-            <div className="form-input ">
-              <input type="text" required />
-              <label className="lh-1 text-16 text-light-1">
-                Identity Number
-              </label>
-            </div>
-          </div>
-          {/* End col-12 */}
-
-          <div className="col-md-6">
-            <div className="form-input ">
-              <input type="text" required />
-              <label className="lh-1 text-16 text-light-1">Phone Number</label>
-            </div>
-          </div>
-          {/* End col-12 */}
-
-          <div className="col-12">
-            <div className="form-input ">
-              <textarea required rows={6} defaultValue={""} />
-              <label className="lh-1 text-16 text-light-1">
-                Special Requests
-              </label>
-            </div>
-          </div>
-          {/* End col-12 */}
+          {/* {passengerInfoList.map((passenger, index) => (
+            <div key={index} className={`row x-gap-20 y-gap-20`}> */}
+          <PassengerForm
+            index={currentPassengerPos}
+            // passenger={currentPassenger}
+            passengerList={passengerInfoList}
+            setPassengerList={setPassengerInfoList}
+          />
+          {/* </div> */}
+          {/* ))} */}
 
           <div className="col-12">
             <div className="row y-gap-20 items-center justify-between">
@@ -136,7 +168,7 @@ const PassengerInfo = () => {
 
       <div className="col-xl-5 col-lg-4 mt-30">
         <div className="booking-sidebar">
-          <BookingDetails />
+          <BookingDetails tour={tour} bookingTemp={bookingTemp} />
         </div>
       </div>
       {/*  */}

@@ -58,7 +58,7 @@ const SlideGallery = ({ urls }: { urls?: string[] }) => {
               className="absolute px-10 py-10 col-12  d-flex justify-end items-end z-2 bottom-0 end-0"
               key={i}
             >
-              <Item width={451} height={450} original={slide} thumbnail={slide}>
+              <Item width="1400" height="800" original={slide}>
                 {({ ref, open }) => (
                   <div
                     className="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery"

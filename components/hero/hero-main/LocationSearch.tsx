@@ -7,10 +7,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState } from "react";
-import cities from "@data/cities.json";
+import { ICity } from "@/data/ModelInterfaces";
+import { IToursPageRequest } from "@/data/RequestInterfaces";
+import { getCities } from "@/networks/apis/CitiesAPIs";
+import { Dispatch, SetStateAction, useState } from "react";
 
-const SearchBar = () => {
+const SearchBar = ({
+  pageRequest,
+  setPageRequest,
+}: {
+  pageRequest: IToursPageRequest;
+  setPageRequest: Dispatch<SetStateAction<IToursPageRequest>>;
+}) => {
+  const cities = getCities();
   const [searchValue, setSearchValue] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -42,9 +51,10 @@ const SearchBar = () => {
     },
   ];
 
-  const handleOptionClick = (item) => {
+  const handleOptionClick = (item : ICity) => {
     setSearchValue(item.name);
     setSelectedItem(item);
+    setPageRequest({...pageRequest, location: item.name})
   };
 
   return (
@@ -75,7 +85,9 @@ const SearchBar = () => {
               {cities.map((item) => (
                 <li
                   className={`-link d-block col-12 tw-min-w-[200px] tw-max-w-[300px] text-left rounded-4 px-20 py-15 js-search-option mb-1 ${
-                    selectedItem && selectedItem.id === item.code ? "active" : ""
+                    selectedItem && selectedItem.code === item.code
+                      ? "active"
+                      : ""
                   }`}
                   key={item.code}
                   role="button"

@@ -8,7 +8,10 @@ export const metadata = {
   description: "GoTrip - Travel & Tour React NextJS Template",
 };
 
-const index = () => {
+
+
+const index = ({searchParams}) => {
+
   return (
     <>
       {/* End Page Title */}
@@ -21,7 +24,7 @@ const index = () => {
 
       <section className="pt-40 layout-pb-md">
         <div className="container">
-          <StepperBooking />
+          <StepperBooking tourId={searchParams.id}/>
         </div>
         {/* End container */}
       </section>

@@ -1,18 +1,24 @@
+
 import CallToActions from "@/components/common/CallToActions";
 import Header11 from "@/components/header/header-11";
 import DefaultFooter from "@/components/footer/default";
-import MainFilterSearchBox from "@/components/tour-list/tour-list-v1/MainFilterSearchBox";
-import TopHeaderFilter from "@/components/tour-list/tour-list-v1/TopHeaderFilter";
-import TourProperties from "@/components/tour-list/tour-list-v1/TourProperties";
-import Pagination from "@/components/tour-list/common/Pagination";
-import Sidebar from "@/components/tour-list/tour-list-v1/Sidebar";
+import MainFilterSearchBox from "@/components/tours/MainFilterSearchBox";
+import TopHeaderFilter from "@/components/tours/TopHeaderFilter";
+import TourProperties from "@/components/tours/TourProperties";
+import Pagination from "@/components/tours/common/Pagination";
+import Sidebar from "@/components/tours/Sidebar";
+import { useSearchParams } from "next/navigation";
+import { IPageResponse, ITourListing } from "@/data/ResponseInterfaces";
+import { getTours } from "@/networks/apis/ToursAPIs";
 
 export const metadata = {
   title: "Tour List v1 || GoTrip - Travel & Tour React NextJS Template",
   description: "GoTrip - Travel & Tour React NextJS Template",
 };
 
-const index = () => {
+const index = async ({ params, searchParams }) => {
+  const toursPageResponse : IPageResponse<ITourListing> = await getTours(null);
+
   return (
     <>
       {/* End Page Title */}
@@ -82,7 +88,7 @@ const index = () => {
               <div className="mt-30"></div>
               {/* End mt--30 */}
               <div className="row y-gap-30">
-                <TourProperties />
+                <TourProperties tours={toursPageResponse.data}/>
               </div>
               {/* End .row */}
               <Pagination />

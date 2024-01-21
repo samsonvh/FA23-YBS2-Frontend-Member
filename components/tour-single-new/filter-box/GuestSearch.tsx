@@ -1,15 +1,26 @@
+"use client";
 
-'use client'
-
-import React, { useState } from "react";
-const counters = [
-  { name: "Adults", defaultValue: 2 },
-  { name: "Children", defaultValue: 1 },
-  // { name: "Rooms", defaultValue: 1 },
-];
+import React, { useEffect, useState } from "react";
+// const counters = [
+//   { name: "Adults", defaultValue: 1 },
+//   { name: "Children", defaultValue: 0 },
+//   // { name: "Rooms", defaultValue: 1 },
+// ];
 
 const Counter = ({ name, defaultValue, onCounterChange }) => {
   const [count, setCount] = useState(defaultValue);
+
+  useEffect(() => {
+    switch (name) {
+      case "Adults":
+        window.sessionStorage.setItem("adultNumber", count.toString());
+        break;
+      case "Children":
+        window.sessionStorage.setItem("childrenNumber", count.toString());
+        break;
+    }
+  }, [count]);
+
   const incrementCount = () => {
     setCount(count + 1);
     onCounterChange(name, count + 1);
@@ -62,27 +73,39 @@ const Counter = ({ name, defaultValue, onCounterChange }) => {
 };
 
 const GuestSearch = () => {
+  const [counters, setCounters] = useState([
+    {
+      name: "Adults",
+      defaultValue:
+        Number.parseInt(window.sessionStorage.getItem("adultNumber")) | 1,
+    },
+    {
+      name: "Children",
+      defaultValue:
+        Number.parseInt(window.sessionStorage.getItem("childrenNumber")) | 0,
+    },
+  ]);
   const [guestCounts, setGuestCounts] = useState({
-    Adults: 2,
-    Children: 1,
-    Rooms: 1,
+    Adults: Number.parseInt(window.sessionStorage.getItem("adultNumber")) | 1,
+    Children: Number.parseInt(window.sessionStorage.getItem("childrenNumber")) | 0,
+    // Rooms: 1,
   });
   const handleCounterChange = (name, value) => {
     setGuestCounts((prevState) => ({ ...prevState, [name]: value }));
   };
   return (
-    <div className="searchMenu-guests px-30 lg:py-20 lg:px-0 js-form-dd js-form-counters position-relative">
+    <div className="searchMenu-guests px-20 py-10 border-light rounded-4 js-form-dd js-form-counters">
       <div
         data-bs-toggle="dropdown"
         data-bs-auto-close="outside"
         aria-expanded="false"
         data-bs-offset="0,22"
       >
-        <h4 className="text-15 fw-500 ls-2 lh-16">Guest</h4>
+        <h4 className="text-15 fw-500 ls-2 lh-16">Number of travelers</h4>
         <div className="text-15 text-light-1 ls-2 lh-16">
           <span className="js-count-adult">{guestCounts.Adults}</span> adults -{" "}
           <span className="js-count-child">{guestCounts.Children}</span>{" "}
-          children
+          childeren
           {/* - <span className="js-count-room">{guestCounts.Rooms}</span>{" "}
           room */}
         </div>

@@ -63,3 +63,44 @@ export interface ITour {
   description: string;
   status: string;
 }
+
+export interface ITourListing {
+  id: string;
+  name: string;
+  imageURL: string;
+  price: number;
+  discountPrice?: number;
+  priority: number;
+  location: string;
+  startTime: Date;
+  endTime: Date;
+  status: string;
+}
+
+export interface IBooking {
+  id: string;
+  fullName: string,
+  email: string,
+  phoneNumber: string,
+  specialRequest: string,
+  tourId: string;
+  bookingDate: string;
+  totalAmount: number;
+  point: number;
+  tourName: string;
+  location: string;
+  startTime: Date;
+  endTime: Date;
+  duration: number;
+  durationUnit: number;
+  tourType: number;
+  totalPassengers: number;
+  note: string;
+  isIncludedBooker: boolean;
+  type: string;
+  status: string;
+  paymentMethod: string;
+  paymentStatus: string;
+  createdDate: Date;
+  deviceToken: string;
+}
